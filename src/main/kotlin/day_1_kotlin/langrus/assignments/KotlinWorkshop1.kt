@@ -33,11 +33,13 @@ object KotlinWorkshop1 {
         //  Присвой "notNullUserString" значение из "nullableElvisString".
         //  Если "nullableElvisString" равно null, сделай значение "notNullUserString" равным значению пустой строки "emptyString".
         //  Исправить присвоение используя Элвис-оператор "?:".
-        var notNullUserString: String? = nullableElvisString
+        var notNullUserString = nullableElvisString
         if (nullableElvisString == null) {
             notNullUserString = emptyString
         }
         notNullUserString = nullableElvisString ?: emptyString
+        // вот это в решении у меня считай тож самое только я каждый шаг из задания делал
+        // var notNullUserString: String = nullableElvisString ?: emptyString
 
         println("Строка результат равна $notNullUserString")
 
@@ -57,12 +59,9 @@ object KotlinWorkshop1 {
         val notNullAlternative = 0
         val firstNumber: Int? = 10
         val secondNumber: Int? = 20
-        var sum: Int? = secondNumber?.let { firstNumber?.plus(it) }
+        var sum: Int? = firstNumber?.plus(secondNumber ?: notNullAlternative)
         if (firstNumber == null) {
             sum = null
-        }
-        if (secondNumber == null) {
-            sum = firstNumber
         }
         println("Сумма равна {$sum}")
 
@@ -83,7 +82,8 @@ object KotlinWorkshop1 {
         val firstIntInput: Int? = MyScanner.scan.nextInt() // <--- вводим первое число
         print("Пожалуйста введите второе число: ")
         val secondIntInput: Int? = MyScanner.scan.nextInt() // <--- вводим второе число
-        val sumIntInputs : Int? = firstIntInput?.plus(secondIntInput ?: 0) // <--- делаем замену потенциального 'null' значением по умолчанию
+        val sumIntInputs: Int? =
+            firstIntInput?.plus(secondIntInput ?: 0) // <--- делаем замену потенциального 'null' значением по умолчанию
         println("Исходная строка: $stringInput, Сумма чисел: $sumIntInputs")
 
 
